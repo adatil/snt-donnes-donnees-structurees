@@ -71,6 +71,11 @@ Films ayant réalisé plus d'un million d'entrées}
 \noindent On souhaite connaître le nombre d'entrées réalisées par les films français de cette liste. Dans la cellule E51, écrivez \texttt{=SOUS.TOTAL(9;E8:E43)} (cette fonction permet de calculer la somme de la colonne E, mais seulement pour les films filtrés).
 
 \vspace{0.5cm}
+\noindent \fbox{\begin{minipage}{0.95\textwidth}
+\textbf{Astuce :} Vous pouvez vérifier vos résultats rapidement grâce à la \textbf{barre d'état} située tout en bas de la fenêtre LibreOffice Calc. Sélectionnez simplement les cellules filtrées de la colonne E : la barre d'état affichera automatiquement le nombre de cellules, leur somme et leur moyenne, sans avoir besoin d'écrire de formule !
+\end{minipage}}
+
+\vspace{0.5cm}
 \textcolor{blue}{\crayon} \textbf{Question 5 :} Combien de films français ont réalisé plus d'un million d'entrées en 2024 ?
 
 \textcolor{blue}{\crayon} \textbf{Question 6 :} Quel est le total d'entrées réalisées par ces films français en 2024 (en millions) ?
@@ -112,7 +117,35 @@ Pour toutes les questions suivantes, précisez la démarche utilisée : Quels fi
 
 \section*{Pour aller plus loin (optionnel)}
 
-\textcolor{blue}{\crayon} \textbf{Question 18 :} Téléchargez le fichier \textit{Liste des établissements cinématographiques actifs} sur data.gouv.fr. Combien de cinémas \og{}Art et Essai\fg{} sont équipés d'un écran 3D ?
+\subsection*{Découverte des tableaux croisés dynamiques}
+
+Un \textbf{tableau croisé dynamique} (aussi appelé \textit{Tableau Pivot}) est un outil puissant qui permet de réorganiser et résumer automatiquement de grandes quantités de données. Au lieu de filtrer et calculer manuellement, le tableau croisé dynamique groupe les données selon vos critères et calcule automatiquement les totaux, moyennes, etc.
+
+\vspace{0.3cm}
+\noindent \textbf{Comment créer un tableau croisé dynamique dans LibreOffice Calc :}
+\begin{enumerate}
+\item Sélectionnez toutes les données de l'onglet 2024 (y compris les en-têtes)
+\item Menu \textit{Insertion} → \textit{Tableau croisé dynamique}
+\item Choisissez \og{}Sélection active\fg{} puis cliquez sur OK
+\item Dans la fenêtre qui s'ouvre, faites glisser :
+   \begin{itemize}
+   \item \textbf{nationalité} vers la zone \og{}Champs de lignes\fg{}
+   \item \textbf{titre} vers la zone \og{}Champs de données\fg{} (pour compter les films)
+   \item \textbf{entrées} vers la zone \og{}Champs de données\fg{} (pour sommer les entrées)
+   \end{itemize}
+\item Cliquez sur OK
+\end{enumerate}
+
+\vspace{0.5cm}
+\noindent Le tableau croisé dynamique vous donnera automatiquement, pour chaque nationalité, le nombre de films et le total des entrées !
+
+\vspace{0.5cm}
+\textcolor{blue}{\crayon} \textbf{Question 18 :} Créez un tableau croisé dynamique sur les données de 2024. En utilisant ce tableau, répondez aux questions suivantes :
+\begin{itemize}
+\item Quelle est la nationalité qui a le plus grand nombre de films ayant dépassé le million d'entrées ?
+\item Quelle nationalité a généré le plus d'entrées au total (en millions) ?
+\item Ces deux réponses sont-elles identiques ? Pourquoi ?
+\end{itemize}
 
 \vspace{1cm}
 \noindent \textbf{Fin du TP - N'oubliez pas de convertir votre compte-rendu en PDF et de le déposer sur Moodle !}
