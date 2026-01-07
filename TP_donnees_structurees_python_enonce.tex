@@ -7,6 +7,7 @@
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{listings}
+\usepackage{textcomp}
 \usepackage{pifont}
 
 \geometry{margin=2.5cm}
@@ -28,6 +29,10 @@
   numberstyle=\tiny\color{gray},
   extendedchars=true,
   inputencoding=utf8,
+  mathescape=false,
+  upquote=true,
+  columns=flexible,
+  keepspaces=true,
   literate=
     {à}{{\`a}}1 {â}{{\^a}}1 {é}{{\'e}}1 {è}{{\`e}}1 {ê}{{\^e}}1
     {î}{{\^i}}1 {ô}{{\^o}}1 {ù}{{\`u}}1 {û}{{\^u}}1
@@ -167,16 +172,16 @@ print(films_fr[['titre', 'entrées (millions)']].head())
 \vspace{0.5cm}
 \textcolor{blue}{\crayon} \textbf{Question 6 :} Écrivez le code qui calcule le total d'entrées réalisées par les films français en 2024.
 
-\textit{Indice :} Utilisez \texttt{films\_fr['entrées (millions)'].sum()}.
+\textit{Indice :} Utilisez la méthode \texttt{sum()} sur la colonne des entrées.
 
 \vspace{0.5cm}
 \noindent \fbox{\begin{minipage}{0.95\textwidth}
-\textbf{Astuce :} La fonction \texttt{describe()} donne un résumé statistique complet d'une colonne :
+\textbf{Astuce :} La fonction \texttt{describe()} donne un résumé statistique complet d'une colonne. Cela affiche le minimum, maximum, moyenne, médiane, etc.
+\end{minipage}}
+
 \begin{lstlisting}
 print(films_fr['entrées (millions)'].describe())
 \end{lstlisting}
-Cela affiche le minimum, maximum, moyenne, médiane, etc.
-\end{minipage}}
 
 \section{Analyse avancée : Films de 2023 et 2024}
 
