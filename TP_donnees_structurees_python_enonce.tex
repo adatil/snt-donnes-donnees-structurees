@@ -1,0 +1,265 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{pifont}
+
+\geometry{margin=2.5cm}
+
+% Définition du symbole crayon
+\newcommand{\crayon}{\ding{46}}
+
+% Configuration pour le code Python
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny\color{gray}
+}
+
+\title{\textbf{TP sur les données structurées}\\
+\large Partie 2 : Analyse de données avec Python et Pandas\\
+Films ayant réalisé plus d'un million d'entrées}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Préparation du compte-rendu}
+
+\begin{enumerate}
+\item Créez un nouveau fichier Python nommé \texttt{analyse\_films.py}
+\item Au fur et à mesure du TP, copiez-collez vos commandes Python et leurs résultats dans un document LibreOffice Writer
+\item Ajoutez vos noms, la date, le titre de la séance
+\item Enregistrez le document dans votre répertoire personnel, en lui donnant pour nom \texttt{snt-chap4-python-NOMS}
+\end{enumerate}
+
+\vspace{0.5cm}
+\textbf{NB :} \textcolor{blue}{\crayon} : Ce symbole indique que vous devez répondre à la question dans votre compte-rendu
+
+\section{Introduction à Pandas}
+
+\textbf{Pandas} est une bibliothèque Python très puissante pour l'analyse de données. Elle permet de manipuler des tableaux de données (appelés \textit{DataFrames}) de manière simple et efficace.
+
+\subsection{Installation et importation}
+
+Si pandas n'est pas installé, ouvrez un terminal et tapez :
+\begin{lstlisting}
+pip install pandas openpyxl
+\end{lstlisting}
+
+Dans votre fichier Python, commencez par importer les bibliothèques nécessaires :
+\begin{lstlisting}
+import pandas as pd
+
+# Lire le fichier Excel
+df = pd.read_excel("Liste des films ayant réalisé plus d'un million d'entrées -.xlsx",
+                   sheet_name='2024', header=6)
+
+# Afficher les premières lignes
+print(df.head())
+\end{lstlisting}
+
+\subsection{Commandes de base}
+
+Voici les commandes essentielles que vous utiliserez :
+\begin{lstlisting}
+# Afficher les colonnes du DataFrame
+print(df.columns)
+
+# Afficher des informations sur les données
+print(df.info())
+
+# Afficher les dimensions (lignes, colonnes)
+print(df.shape)
+
+# Filtrer les données
+films_francais = df[df['nationalité'] == 'FRANCE']
+
+# Trier les données
+df_trie = df.sort_values('entrées (millions)', ascending=False)
+
+# Compter le nombre de lignes
+nombre = len(films_francais)
+
+# Calculer une somme
+total = films_francais['entrées (millions)'].sum()
+\end{lstlisting}
+
+\section{Téléchargement et Ouverture du fichier}
+
+\begin{enumerate}[start=0]
+\item Téléchargez le fichier \textit{Films ayant réalisé plus d'un million d'entrées} depuis \url{https://www.data.gouv.fr/fr/} (recherchez \og{}Films entrées\fg{})
+\item Placez le fichier dans le même dossier que votre script Python
+\item Créez un fichier \texttt{analyse\_films.py} et écrivez le code suivant :
+\end{enumerate}
+
+\begin{lstlisting}
+import pandas as pd
+
+# Lire les données de l'année 2024
+df_2024 = pd.read_excel("Liste des films ayant réalisé plus d'un million d'entrées -.xlsx",
+                        sheet_name='2024', header=6)
+
+# Afficher les premières lignes
+print("Premières lignes du DataFrame :")
+print(df_2024.head(10))
+
+# Afficher les colonnes
+print("\nColonnes disponibles :")
+print(df_2024.columns.tolist())
+\end{lstlisting}
+
+\section{Analyse sommaire des données}
+
+\textcolor{blue}{\crayon} \textbf{Question 1 :} Écrivez le code Python qui affiche le film ayant fait le plus d'entrées en 2024. Donnez son titre et son nombre d'entrées.
+
+\textit{Indice :} Utilisez \texttt{df\_2024.sort\_values()} pour trier par entrées décroissantes, puis \texttt{.iloc[0]} pour obtenir la première ligne.
+
+\vspace{0.5cm}
+\textcolor{blue}{\crayon} \textbf{Question 2 :} Chargez maintenant les données de 2023 et trouvez le film français ayant fait le plus d'entrées cette année-là.
+
+\textit{Indice :} Filtrez d'abord sur la nationalité \texttt{== 'FRANCE'}, puis triez.
+
+\vspace{0.5cm}
+\textcolor{blue}{\crayon} \textbf{Question 3 :} Quelle est la nationalité du film ayant fait le plus d'entrées en 2023 ?
+
+\section{Filtrage et agrégation}
+
+\subsection{Filtrer les films français de 2024}
+
+Écrivez le code suivant pour filtrer les films français :
+
+\begin{lstlisting}
+# Filtrer les films français
+films_fr = df_2024[df_2024['nationalité'] == 'FRANCE']
+
+# Afficher les résultats
+print(films_fr[['titre', 'entrées (millions)']].head())
+\end{lstlisting}
+
+\textcolor{blue}{\crayon} \textbf{Question 4 :} Écrivez le code qui affiche les trois films français ayant fait le plus d'entrées en 2024.
+
+\vspace{0.5cm}
+\textcolor{blue}{\crayon} \textbf{Question 5 :} Écrivez le code qui compte le nombre de films français ayant réalisé plus d'un million d'entrées en 2024.
+
+\textit{Indice :} Utilisez \texttt{len(films\_fr)} ou \texttt{films\_fr.shape[0]}.
+
+\vspace{0.5cm}
+\textcolor{blue}{\crayon} \textbf{Question 6 :} Écrivez le code qui calcule le total d'entrées réalisées par les films français en 2024.
+
+\textit{Indice :} Utilisez \texttt{films\_fr['entrées (millions)'].sum()}.
+
+\vspace{0.5cm}
+\noindent \fbox{\begin{minipage}{0.95\textwidth}
+\textbf{Astuce :} La fonction \texttt{describe()} donne un résumé statistique complet d'une colonne :
+\begin{lstlisting}
+print(films_fr['entrées (millions)'].describe())
+\end{lstlisting}
+Cela affiche le minimum, maximum, moyenne, médiane, etc.
+\end{minipage}}
+
+\section{Analyse avancée : Films de 2023 et 2024}
+
+\subsection{Films sortis en 2023 mais comptabilisés en 2024}
+
+\textcolor{blue}{\crayon} \textbf{Question 7 :} Écrivez le code qui filtre et affiche les films de 2024 dont la date de sortie est en 2023. Expliquez pourquoi ces films apparaissent dans la liste 2024.
+
+\textit{Indice :} Convertissez d'abord la colonne \og{}sortie\fg{} en datetime, puis filtrez sur l'année :
+\begin{lstlisting}
+df_2024['sortie'] = pd.to_datetime(df_2024['sortie'])
+df_2024['année_sortie'] = df_2024['sortie'].dt.year
+films_2023_dans_2024 = df_2024[df_2024['année_sortie'] == 2023]
+\end{lstlisting}
+
+\subsection{Analyse par nationalité}
+
+\textcolor{blue}{\crayon} \textbf{Question 8 :} Écrivez le code qui filtre les films américains (ETATS UNIS) sortis en 2024 (pas en 2023), les trie par entrées décroissantes, et affiche les trois premiers titres ainsi que leur nombre total.
+
+\textcolor{blue}{\crayon} \textbf{Question 9 :} Calculez le total d'entrées des films américains sortis en 2024.
+
+\textcolor{blue}{\crayon} \textbf{Question 10 :} Combien de films britanniques (GRANDE BRETAGNE) ont réalisé plus d'un million d'entrées en 2024 ?
+
+\textcolor{blue}{\crayon} \textbf{Question 11 :} Trouvez le film français ayant réalisé le moins d'entrées (mais plus d'un million) en 2024.
+
+\textit{Indice :} Triez par ordre croissant avec \texttt{ascending=True}.
+
+\subsection{Analyse de l'année 2023}
+
+\textcolor{blue}{\crayon} \textbf{Question 12 :} Chargez les données de 2023 et comptez le nombre de films français ayant réalisé plus d'un million d'entrées.
+
+\textcolor{blue}{\crayon} \textbf{Question 13 :} Trouvez le film américain ayant fait le plus d'entrées en 2023 et son nombre d'entrées.
+
+\textcolor{blue}{\crayon} \textbf{Question 14 :} Trouvez le film japonais (JP) de 2023 ayant dépassé le million d'entrées.
+
+\textcolor{blue}{\crayon} \textbf{Question 15 :} Combien de films de la liste 2023 sont en réalité sortis en 2022 ?
+
+\subsection{Comparaison 2023-2024}
+
+\textcolor{blue}{\crayon} \textbf{Question 16 :} Comparez le nombre total de films ayant réalisé plus d'un million d'entrées en 2023 et en 2024.
+
+\textcolor{blue}{\crayon} \textbf{Question 17 :} Trouvez le film français ayant réalisé le plus d'entrées sur les deux années confondues.
+
+\section*{Pour aller plus loin : Groupby et agrégations}
+
+\subsection{Regroupement par nationalité}
+
+Pandas permet de regrouper les données facilement avec \texttt{groupby()} :
+
+\begin{lstlisting}
+# Grouper par nationalité et calculer des statistiques
+stats_nationalite = df_2024.groupby('nationalité').agg({
+    'titre': 'count',  # Compter les films
+    'entrées (millions)': 'sum'  # Sommer les entrées
+})
+
+# Renommer les colonnes pour plus de clarté
+stats_nationalite.columns = ['Nombre de films', 'Total entrées']
+
+# Trier par nombre d'entrées décroissant
+stats_nationalite = stats_nationalite.sort_values('Total entrées',
+                                                   ascending=False)
+
+print(stats_nationalite)
+\end{lstlisting}
+
+\textcolor{blue}{\crayon} \textbf{Question 18 :} Utilisez \texttt{groupby()} pour créer un tableau résumant, pour chaque nationalité en 2024, le nombre de films et le total d'entrées. Quelle nationalité domine ?
+
+\subsection{Analyse temporelle (Défi)}
+
+\textcolor{blue}{\crayon} \textbf{Question 19 (Défi) :} Créez une analyse temporelle des sorties de films en 2024. Votre code doit :
+\begin{itemize}
+\item Extraire le mois et le trimestre de la date de sortie
+\item Grouper par trimestre
+\item Calculer le nombre de films et le total d'entrées par trimestre
+\item Afficher les résultats sous forme de tableau
+\end{itemize}
+
+\textit{Indice :} Utilisez :
+\begin{lstlisting}
+df_2024['mois'] = df_2024['sortie'].dt.month
+df_2024['trimestre'] = 'T' + ((df_2024['sortie'].dt.month - 1) // 3 + 1).astype(str)
+\end{lstlisting}
+
+\vspace{0.5cm}
+\noindent \fbox{\begin{minipage}{0.95\textwidth}
+\textbf{Réflexion critique :} Rappelez-vous que cette analyse regroupe par date de \textbf{sortie}, pas par période de fréquentation réelle. Un film sorti en juin génère des entrées sur plusieurs mois !
+\end{minipage}}
+
+\vspace{1cm}
+\noindent \textbf{Fin du TP - N'oubliez pas de convertir votre compte-rendu en PDF et de le déposer sur Moodle !}
+
+\end{document}
