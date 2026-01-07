@@ -1,0 +1,57 @@
+TP sur les données structurées 
+Partie 1 : Tableur et tris
+Préparation du compte-rendu
+Ouvrez le traitement de texte LibreOffice 
+Écrivez vos noms, la date, le titre de la séance.
+Enregistrez le document dans votre répertoire personnel, en lui donnant pour nom snt-chap4-tableur-NOMS (en remplaçant NOMS par vos noms de famille).
+Convertissez le document en PDF (pour vérifier que vous savez comment faire). Vous ferez cela à nouveau à la fin de l'activité, au moment de rendre le compte-rendu.
+NB :✏️ : Ce symbole indique que vous devez répondre à la question dans votre compte-rendu
+Exemple pas à pas
+0.Téléchargement et Ouverture du fichier
+Lancez un navigateur web et rendez vous sur la plateforme ouverte des données publiques françaises. (https://www.data.gouv.fr/fr/)
+Recherchez Films entrées dans le champ de recherche.
+Téléchargez le fichier Films ayant réalisé plus d'un million d'entrées au format .xlsx.
+Ouvrir le logiciel LibreOffice Calc, et ouvrez le fichier que vous venez de télécharger avec ce logiciel.
+1.Analyse sommaire du fichier
+✏️ Quel est le film ayant fait le plus d'entrées en 2018 ?
+✏️ Quel est le film français ayant fait le plus d'entrées en 2014 ?
+✏️ Quelle est la nationalité du film ayant fait le plus d'entrées en 2010 ?
+2.Utilisation des filtres
+Placez-vous dans l'onglet de l'année 2018.
+Cliquez sur la gauche de la ligne 7 (pour la sélectionner entièrement).
+Dans le menu, cliquez sur Données puis AutoFiltre.
+Filtrez par nationalité, décochez tous les éléments sauf FR, puis validez avec le bouton OK.
+
+Vous ne devriez voir afficher que les films français de l'année 2018.
+✏️ Quels sont les trois films français ayant fait le plus d'entrée en 2018 ?
+On souhaite connaître le nombre de films français de cette liste. Dans la cellule B51, écrivez =SOUS.TOTAL(3;B8:B49) (cette fonction permet de calculer le nombre de cellules de la colonne B, mais seulement pour les cellules filtrés). La cellule devrait afficher 11, soit 11 films dans cette liste.
+On souhaite connaître le nombre d'entrée réalisées par les films français de cette liste. Dans la cellule E51, écrivez =SOUS.TOTAL(9;E8:E49) (cette fonction permet de calculer la somme de la colonne E, mais seulement pour les films filtrés). La cellule devrait afficher 32,25, soit 32,25 millions d'entrées.
+Supprimez le filtre sur la nationalité (vous devez à nouveau voir toutes les nationalités), puis triez la colonne sortie par date.
+
+Les quatre premiers films affichés devraient être Coco, Star Wars, Jumanji et Ferdinand (à égalité).
+✏️ Ces quatre films sont sortis en 2017, pourtant, ce sont les films les plus vus en 2018 qui sont affichés. Expliquez ce paradoxe.
+✏️ On veut connaître, parmi les films des États-Unis sortis en 2018 (et non 2017), quels sont les quatre films ayant réalisé le plus d'entrées.
+Décrire sur votre compte-rendu votre démarche pour répondre à cette question : Quels filtres appliqués ? Quels tris ?
+Répondre à la question.
+✏️ Quel est le total des entrées des films filtrés à la question précédente ?
+
+Exercice (Donner les réponses dans Moodle)
+
+  
+Retournez sur data.gouv.fr, et recherchez liste cinémas, puis cliquez sur Liste des établissements cinématographiques actifs.
+✏️ Qu'est-ce qui vous indique que le fichier trouvé est digne de confiance ?
+Téléchargez le fichier, et ouvrez le avec LibreOffice.
+Dans toute cette partie : ✏️
+Utilisez ce fichier, et les filtres, tris, fonctions vus dans la partie précédente pour répondre aux questions suivantes.
+Toutes les questions concernent l'année 2018 uniquement. En cas de besoin on pourra effectuer une recherche sur internet sur « sous.total dans libre office » ou sur les filtres
+Pour chaque question, préciser la démarche utilisée : Quels filtres avez-vous utilisé ? Quels tris ? Quelles fonctions (dans quelles cellules) ? Quelles analyses ou manipulations avez-vous effectuées « à la main » le cas écheant? Votre démarche est clairement expliquée si en lisant votre compte-rendu, il est possible de l'appliquer sans hésitation et sans erreur.
+
+Quelle est la salle de cinéma en France ayant le plus de fauteuils ? Donner la ville, le nom de la salle, le nombre de fauteuils.
+Quelle est la salle de cinéma en France ayant le moins de fauteuils (mais pas 0) ? Donner la ville, le nom de la salle, le nombre de fauteuils.
+Combien d'écrans et de fauteuils l'unique cinéma de Vienne a-t-il ?
+Combien de cinémas « Art et Essai » sont équipés d'un écran 3D ?
+Combien de fauteuils ont l'ensemble des dix plus gros cinémas français (en nombre de fauteuils) ?
+Combien de cinémas ont entre 300 et 500 fauteuils ?
+Combien de fauteuils les cinémas de Brest contiennent-ils en tout ?
+Combien de  cinémas le Finistère compte-t-il ?
+Quel est le nombre moyen de fauteuils des cinémas du Finistère ?

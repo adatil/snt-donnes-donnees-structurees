@@ -1,0 +1,120 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{pifont}
+
+\geometry{margin=2.5cm}
+
+% Définition du symbole crayon
+\newcommand{\crayon}{\ding{46}}
+
+\title{\textbf{TP sur les données structurées}\\
+\large Partie 1 : Tableur et tris\\
+Films ayant réalisé plus d'un million d'entrées}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Préparation du compte-rendu}
+
+\begin{enumerate}
+\item Ouvrez le traitement de texte LibreOffice Writer
+\item Écrivez vos noms, la date, le titre de la séance
+\item Enregistrez le document dans votre répertoire personnel, en lui donnant pour nom \texttt{snt-chap4-tableur-NOMS} (en remplaçant NOMS par vos noms de famille)
+\item Convertissez le document en PDF (pour vérifier que vous savez comment faire). Vous ferez cela à nouveau à la fin de l'activité, au moment de rendre le compte-rendu.
+\end{enumerate}
+
+\vspace{0.5cm}
+\textbf{NB :} \textcolor{blue}{\crayon} : Ce symbole indique que vous devez répondre à la question dans votre compte-rendu
+
+\section{Téléchargement et Ouverture du fichier}
+
+\begin{enumerate}[start=0]
+\item Lancez un navigateur web et rendez-vous sur la plateforme ouverte des données publiques françaises : \url{https://www.data.gouv.fr/fr/}
+\item Recherchez \textbf{Films entrées} dans le champ de recherche
+\item Téléchargez le fichier \textit{Films ayant réalisé plus d'un million d'entrées} au format \texttt{.xlsx}
+\item Ouvrez le logiciel LibreOffice Calc, et ouvrez le fichier que vous venez de télécharger
+\end{enumerate}
+
+\section{Analyse sommaire du fichier}
+
+\textcolor{blue}{\crayon} \textbf{Question 1 :} Quel est le film ayant fait le plus d'entrées en 2024 ?
+
+\textcolor{blue}{\crayon} \textbf{Question 2 :} Quel est le film français ayant fait le plus d'entrées en 2023 ?
+
+\textcolor{blue}{\crayon} \textbf{Question 3 :} Quelle est la nationalité du film ayant fait le plus d'entrées en 2023 ?
+
+\section{Utilisation des filtres}
+
+\begin{enumerate}
+\item Placez-vous dans l'onglet de l'année \textbf{2024}
+\item Cliquez sur la gauche de la ligne 7 (pour la sélectionner entièrement)
+\item Dans le menu, cliquez sur \textit{Données} puis \textit{AutoFiltre}
+\item Filtrez par nationalité, décochez tous les éléments sauf \texttt{FRANCE}, puis validez avec le bouton OK
+\item Vous ne devriez voir afficher que les films français de l'année 2024
+\end{enumerate}
+
+\textcolor{blue}{\crayon} \textbf{Question 4 :} Quels sont les trois films français ayant fait le plus d'entrées en 2024 ?
+
+\vspace{0.5cm}
+\noindent On souhaite connaître le nombre de films français de cette liste. Dans une cellule vide (par exemple B51), écrivez \texttt{=SOUS.TOTAL(3;B8:B49)} (cette fonction permet de calculer le nombre de cellules de la colonne B, mais seulement pour les cellules filtrées).
+
+\vspace{0.3cm}
+\noindent On souhaite connaître le nombre d'entrées réalisées par les films français de cette liste. Dans la cellule E51, écrivez \texttt{=SOUS.TOTAL(9;E8:E49)} (cette fonction permet de calculer la somme de la colonne E, mais seulement pour les films filtrés).
+
+\vspace{0.5cm}
+\textcolor{blue}{\crayon} \textbf{Question 5 :} Combien de films français ont réalisé plus d'un million d'entrées en 2024 ?
+
+\textcolor{blue}{\crayon} \textbf{Question 6 :} Quel est le total d'entrées réalisées par ces films français en 2024 (en millions) ?
+
+\vspace{0.5cm}
+\noindent Supprimez le filtre sur la nationalité (vous devez à nouveau voir toutes les nationalités), puis triez la colonne \textit{sortie} par date.
+
+\textcolor{blue}{\crayon} \textbf{Question 7 :} Parmi les films affichés en 2024, certains sont sortis en 2023 (comme \textit{Wonka} sorti le 13 décembre 2023). Expliquez pourquoi ces films apparaissent dans la liste des films les plus vus en 2024.
+
+\section{Exercice : Analyse des films de 2023 et 2024}
+
+Pour toutes les questions suivantes, précisez la démarche utilisée : Quels filtres avez-vous utilisés ? Quels tris ? Quelles fonctions (dans quelles cellules) ? Quelles analyses ou manipulations avez-vous effectuées \og{}à la main\fg{} le cas échéant ?
+
+\subsection*{Questions sur l'année 2024}
+
+\textcolor{blue}{\crayon} \textbf{Question 8 :} Combien de films américains (ETATS UNIS) sortis en 2024 (et non en 2023) ont réalisé plus d'un million d'entrées ? Donnez également le titre des trois premiers.
+
+\textcolor{blue}{\crayon} \textbf{Question 9 :} Quel est le total des entrées des films américains sortis en 2024 (en millions) ?
+
+\textcolor{blue}{\crayon} \textbf{Question 10 :} Combien de films britanniques (GRANDE BRETAGNE) ont réalisé plus d'un million d'entrées en 2024 ?
+
+\textcolor{blue}{\crayon} \textbf{Question 11 :} Quel est le film français ayant réalisé le moins d'entrées (mais plus d'un million) en 2024 ? Donnez son titre et son nombre d'entrées.
+
+\subsection*{Questions sur l'année 2023}
+
+\textcolor{blue}{\crayon} \textbf{Question 12 :} Placez-vous dans l'onglet 2023. Combien de films français ont réalisé plus d'un million d'entrées en 2023 ?
+
+\textcolor{blue}{\crayon} \textbf{Question 13 :} Quel est le film américain ayant fait le plus d'entrées en 2023 ? Combien d'entrées a-t-il réalisées (en millions) ?
+
+\textcolor{blue}{\crayon} \textbf{Question 14 :} En 2023, un film japonais (JP) a réalisé plus d'un million d'entrées. Quel est son titre ?
+
+\textcolor{blue}{\crayon} \textbf{Question 15 :} Certains films de 2023 sont sortis en 2022 (comme \textit{Avatar : La voie de l'eau}). Combien de films sortis en 2022 apparaissent dans la liste 2023 ?
+
+\subsection*{Comparaison 2023-2024}
+
+\textcolor{blue}{\crayon} \textbf{Question 16 :} Comparez le nombre total de films ayant réalisé plus d'un million d'entrées en 2023 et en 2024. Quelle année a connu le plus de succès au cinéma ?
+
+\textcolor{blue}{\crayon} \textbf{Question 17 :} En utilisant les fonctions de tri et de filtre, identifiez quel film français a réalisé le plus d'entrées sur les deux années 2023 et 2024 confondues. Donnez son titre, son année et son nombre d'entrées.
+
+\section*{Pour aller plus loin (optionnel)}
+
+\textcolor{blue}{\crayon} \textbf{Question 18 :} Téléchargez le fichier \textit{Liste des établissements cinématographiques actifs} sur data.gouv.fr. Combien de cinémas \og{}Art et Essai\fg{} sont équipés d'un écran 3D ?
+
+\vspace{1cm}
+\noindent \textbf{Fin du TP - N'oubliez pas de convertir votre compte-rendu en PDF et de le déposer sur Moodle !}
+
+\end{document}

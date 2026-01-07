@@ -1,0 +1,183 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+\geometry{margin=2.5cm}
+
+\title{\textbf{TP sur les données structurées - CORRIGÉ}\\
+\large Partie 1 : Tableur et tris\\
+Films ayant réalisé plus d'un million d'entrées}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Analyse sommaire du fichier}
+
+\textbf{Question 1 :} Quel est le film ayant fait le plus d'entrées en 2024 ?
+
+\textcolor{blue}{\textbf{Réponse :}} Il s'agit du film \textbf{\og{}UN P'TIT TRUC EN PLUS\fg{}} avec 10,72 millions d'entrées (10~716~771 entrées exactement).
+
+\vspace{0.5cm}
+\textbf{Question 2 :} Quel est le film français ayant fait le plus d'entrées en 2023 ?
+
+\textcolor{blue}{\textbf{Réponse :}} En 2023, le film français ayant réalisé le plus d'entrées est \textbf{\og{}ASTÉRIX ET OBÉLIX ET L'EMPIRE DU MILIEU\fg{}} avec 4,61 millions d'entrées (4~605~168 entrées).
+
+\vspace{0.5cm}
+\textbf{Question 3 :} Quelle est la nationalité du film ayant fait le plus d'entrées en 2023 ?
+
+\textcolor{blue}{\textbf{Réponse :}} Le film ayant réalisé le plus d'entrées en 2023 est \og{}SUPER MARIO BROS. LE FILM\fg{} qui est un film \textbf{américain (US)} avec 7,25 millions d'entrées.
+
+\section{Utilisation des filtres}
+
+\textbf{Question 4 :} Quels sont les trois films français ayant fait le plus d'entrées en 2024 ?
+
+\textcolor{blue}{\textbf{Réponse :}} Les trois films français ayant réalisé le plus d'entrées en 2024 sont (dans l'ordre) :
+\begin{enumerate}
+\item \textbf{UN P'TIT TRUC EN PLUS} - 10,72 millions d'entrées
+\item \textbf{LE COMTE DE MONTE-CRISTO} - 9,39 millions d'entrées
+\item \textbf{L'AMOUR OUF} - 4,83 millions d'entrées
+\end{enumerate}
+
+\textit{Démarche :} Onglet 2024, appliquer un AutoFiltre sur la ligne 7, filtrer la nationalité en ne gardant que \og{}FRANCE\fg{}, observer les premières lignes.
+
+\vspace{0.5cm}
+\textbf{Question 5 :} Combien de films français ont réalisé plus d'un million d'entrées en 2024 ?
+
+\textcolor{blue}{\textbf{Réponse :}} \textbf{9 films français} ont réalisé plus d'un million d'entrées en 2024.
+
+\textit{Démarche :} Avec le filtre français actif, utiliser \texttt{=SOUS.TOTAL(3;B8:B49)} pour compter le nombre de lignes filtrées.
+
+\vspace{0.5cm}
+\textbf{Question 6 :} Quel est le total d'entrées réalisées par ces films français en 2024 (en millions) ?
+
+\textcolor{blue}{\textbf{Réponse :}} Le total des entrées des films français en 2024 est d'environ \textbf{37,39 millions d'entrées}.
+
+\textit{Démarche :} Avec le filtre français actif, utiliser \texttt{=SOUS.TOTAL(9;E8:E49)} pour sommer les entrées.
+
+\vspace{0.5cm}
+\textbf{Question 7 :} Parmi les films affichés en 2024, certains sont sortis en 2023 (comme \textit{Wonka} sorti le 13 décembre 2023). Expliquez pourquoi ces films apparaissent dans la liste des films les plus vus en 2024.
+
+\textcolor{blue}{\textbf{Réponse :}} Ces films sont sortis en fin d'année 2023 (décembre). Par conséquent, ils ont réalisé la majorité de leurs entrées en 2024, après leur sortie. C'est pourquoi ils apparaissent dans la liste des films les plus vus en 2024, même s'ils sont officiellement sortis en 2023.
+
+\section{Exercice : Analyse des films de 2023 et 2024}
+
+\subsection*{Questions sur l'année 2024}
+
+\textbf{Question 8 :} Combien de films américains (ETATS UNIS) sortis en 2024 (et non en 2023) ont réalisé plus d'un million d'entrées ? Donnez également le titre des trois premiers.
+
+\textcolor{blue}{\textbf{Réponse :}} \textbf{13 films américains} sortis en 2024 ont réalisé plus d'un million d'entrées.
+
+Les trois premiers sont :
+\begin{enumerate}
+\item VICE-VERSA 2 - 8,29 millions d'entrées
+\item VAIANA 2 - 6,68 millions d'entrées
+\item MOI, MOCHE ET MÉCHANT 4 - 4,38 millions d'entrées
+\end{enumerate}
+
+\textit{Démarche :} Onglet 2024, appliquer un AutoFiltre, filtrer la nationalité (ETATS UNIS uniquement), filtrer la date de sortie (décocher 2023), trier par entrées décroissantes, utiliser \texttt{SOUS.TOTAL(3;...)} pour compter.
+
+\vspace{0.5cm}
+\textbf{Question 9 :} Quel est le total des entrées des films américains sortis en 2024 (en millions) ?
+
+\textcolor{blue}{\textbf{Réponse :}} Le total est d'environ \textbf{40,51 millions d'entrées}.
+
+\textit{Démarche :} Avec les filtres de la question précédente, utiliser \texttt{=SOUS.TOTAL(9;E8:E49)}.
+
+\vspace{0.5cm}
+\textbf{Question 10 :} Combien de films britanniques (GRANDE BRETAGNE) ont réalisé plus d'un million d'entrées en 2024 ?
+
+\textcolor{blue}{\textbf{Réponse :}} \textbf{6 films britanniques} ont réalisé plus d'un million d'entrées en 2024.
+
+\textit{Démarche :} Onglet 2024, filtrer sur nationalité = GRANDE BRETAGNE, compter avec \texttt{SOUS.TOTAL(3;...)}.
+
+\vspace{0.5cm}
+\textbf{Question 11 :} Quel est le film français ayant réalisé le moins d'entrées (mais plus d'un million) en 2024 ? Donnez son titre et son nombre d'entrées.
+
+\textcolor{blue}{\textbf{Réponse :}} Le film français avec le moins d'entrées est \textbf{\og{}EMILIA PEREZ\fg{}} avec 1,08 million d'entrées (1~083~748 entrées).
+
+\textit{Démarche :} Onglet 2024, filtrer sur FRANCE, trier la colonne entrées par ordre croissant, regarder la dernière ligne filtrée.
+
+\subsection*{Questions sur l'année 2023}
+
+\textbf{Question 12 :} Placez-vous dans l'onglet 2023. Combien de films français ont réalisé plus d'un million d'entrées en 2023 ?
+
+\textcolor{blue}{\textbf{Réponse :}} \textbf{15 films français} ont réalisé plus d'un million d'entrées en 2023.
+
+\textit{Démarche :} Onglet 2023, AutoFiltre, filtrer sur FRANCE, utiliser \texttt{=SOUS.TOTAL(3;B8:B49)}.
+
+\vspace{0.5cm}
+\textbf{Question 13 :} Quel est le film américain ayant fait le plus d'entrées en 2023 ? Combien d'entrées a-t-il réalisées (en millions) ?
+
+\textcolor{blue}{\textbf{Réponse :}} Le film américain ayant réalisé le plus d'entrées en 2023 est \textbf{\og{}SUPER MARIO BROS. LE FILM\fg{}} avec \textbf{7,25 millions d'entrées} (7~249~542 entrées).
+
+\textit{Démarche :} Onglet 2023, trier par entrées décroissantes, identifier le premier film américain (ou filtrer sur US et regarder le rang 1).
+
+\vspace{0.5cm}
+\textbf{Question 14 :} En 2023, un film japonais (JP) a réalisé plus d'un million d'entrées. Quel est son titre ?
+
+\textcolor{blue}{\textbf{Réponse :}} Il s'agit du film \textbf{\og{}LE GARÇON ET LE HÉRON\fg{}} avec 1,55 million d'entrées.
+
+\textit{Démarche :} Onglet 2023, filtrer sur nationalité = JP.
+
+\vspace{0.5cm}
+\textbf{Question 15 :} Certains films de 2023 sont sortis en 2022 (comme \textit{Avatar : La voie de l'eau}). Combien de films sortis en 2022 apparaissent dans la liste 2023 ?
+
+\textcolor{blue}{\textbf{Réponse :}} \textbf{2 films} sortis en 2022 apparaissent dans la liste 2023 :
+\begin{itemize}
+\item AVATAR : LA VOIE DE L'EAU (sorti le 14/12/2022)
+\item LE CHAT POTTÉ 2 : LA DERNIÈRE QUÊTE (sorti le 07/12/2022)
+\end{itemize}
+
+\textit{Démarche :} Onglet 2023, trier la colonne sortie par date, observer les films de fin 2022.
+
+\subsection*{Comparaison 2023-2024}
+
+\textbf{Question 16 :} Comparez le nombre total de films ayant réalisé plus d'un million d'entrées en 2023 et en 2024. Quelle année a connu le plus de succès au cinéma ?
+
+\textcolor{blue}{\textbf{Réponse :}}
+\begin{itemize}
+\item En 2023 : 43 films ont réalisé plus d'un million d'entrées
+\item En 2024 : 36 films ont réalisé plus d'un million d'entrées
+\end{itemize}
+
+L'année \textbf{2023} a connu plus de succès en termes de nombre de films à succès. Cependant, en 2024, le film \og{}UN P'TIT TRUC EN PLUS\fg{} a réalisé un record avec 10,72 millions d'entrées, soit plus que le meilleur film de 2023 (7,25 millions).
+
+\textit{Démarche :} Compter le nombre de lignes de données dans chaque onglet (ligne 7 à la dernière ligne avec données).
+
+\vspace{0.5cm}
+\textbf{Question 17 :} En utilisant les fonctions de tri et de filtre, identifiez quel film français a réalisé le plus d'entrées sur les deux années 2023 et 2024 confondues. Donnez son titre, son année et son nombre d'entrées.
+
+\textcolor{blue}{\textbf{Réponse :}} Le film français ayant réalisé le plus d'entrées est \textbf{\og{}UN P'TIT TRUC EN PLUS\fg{}} sorti en \textbf{2024} avec \textbf{10,72 millions d'entrées}.
+
+\textit{Démarche :} Comparer les films français des deux années. Dans l'onglet 2024, filtrer sur FRANCE et noter le meilleur (10,72M). Dans l'onglet 2023, filtrer sur FRANCE et noter le meilleur (4,61M). Comparer les deux.
+
+\section*{Pour aller plus loin}
+
+\textbf{Question 18 :} Téléchargez le fichier \textit{Liste des établissements cinématographiques actifs} sur data.gouv.fr. Combien de cinémas \og{}Art et Essai\fg{} sont équipés d'un écran 3D ?
+
+\textcolor{blue}{\textbf{Réponse :}} \textbf{728 cinémas} \og{}Art et Essai\fg{} sont équipés d'un écran 3D.
+
+\textit{Démarche :} Télécharger le fichier, ouvrir avec LibreOffice Calc, appliquer deux filtres simultanément (Art et Essai = OUI, Écran 3D = OUI), utiliser \texttt{=SOUS.TOTAL(3;...)} pour compter les lignes.
+
+\vspace{1cm}
+\section*{Rappel des principales fonctions SOUS.TOTAL}
+
+La fonction \texttt{SOUS.TOTAL} permet d'effectuer des calculs uniquement sur les données filtrées :
+\begin{itemize}
+\item \texttt{SOUS.TOTAL(1;plage)} : Moyenne
+\item \texttt{SOUS.TOTAL(3;plage)} : Nombre de cellules non vides (NBVAL)
+\item \texttt{SOUS.TOTAL(9;plage)} : Somme
+\end{itemize}
+
+\vspace{1cm}
+\noindent \textbf{Fin du corrigé}
+
+\end{document}

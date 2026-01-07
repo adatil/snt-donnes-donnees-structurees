@@ -1,0 +1,47 @@
+Tableur et tris (correction)
+Exemple
+Analyse sommaire
+Il s’agit du film « Indestructibles 2 »
+En 2014 c’est le film « Qu’est-ce qu’on a fait au bon dieu ? »
+Il s’agit d’un film américain (US) puisque c’est Avatar (en 2010)
+
+Utilisation des filtres
+5.Il s’agit (dans l’ordre ) de : « Les Tuche 3 » , « La Ch’tite Famille » et « Le grand bain » . Pour les obtenir il suffit de décocher us et gb dans l’onglet nationalité. 
+9. Ces films sont sortis en fin d’année 2017. Par conséquent ils ont fait  bien plus d’entrées en 2018.
+10. 1. et 2.  Voici les films :
+Pour les obtenir il faut décocher 2017 dans la date de sortie, décocher fr et gb dans la nationalité et veiller à avoir un tri décroissant sur les entrées.
+11. On peut utiliser le formule =sous.total(9 ; E8 :E17 ) écrite dans la cellule E50.
+On obtient 18,04 millions d’entrées.
+
+Exercice 
+A) 2. Ce fichier provient d’un site gouvernemental (connexion sécurisée comme l’atteste le cadenas) et le fichier est garanti comme étant produit par un organisme digne de confiance (CNC ici)
+B) 1. Un tri décroissant sur la colonne fauteuils nous donne : Kinépolis un cinéma de Lille qui comporte 7358 fauteuils.
+2. Un tri croissant (en excluant éventuellement les salles à 0 fauteuils) nous donne La salle communale de Saint-Martin-de-Clelles qui comporte 25 places
+3.Dans commune on recherche « Vienne » et on obtient : un cinéma qui comporte 8 écrans et 1437 fauteuils. 
+4. On utilise les deux filtres « Art et essai » et « Ecran 3D » : on obtient 728 après utilisation de =sous.total(3 ;I50 :I2009 ) dans la cellule I2046
+5.On peut appliquer un filtre décroissant dans la catégorie fauteuils + la commande top 10: on obtient   (à l’aide d’un sous.total(9 ; ) appliqué sur la plage) . On obtient 45799 fauteuils
+6.Ici mieux vaut appliquer un filtre standard que l’on personnalise : 
+
+A l’aide d’un sous total(3) on obtient 414 salles.
+
+
+
+
+
+
+
+
+
+
+
+7.On filtre les communes en ne gardant que Brest. Ensuite on fait un sous.total(9) sur les fauteuils et on trouve en tout 5556 fauteuils dans les cinémas brestois.
+
+8. On filtre dans les les codes communes en ne gardant que ceux qui correspondent au Finistère (commençant par 29). : un sous total(3) nous donne 32 cinémas dans le département.
+
+9. Pour la moyenne des fauteuils on utilise un sous total(1) : on obtient une moyenne de 497 fauteuils par cinéma.
+
+
+Rappel : liste des code fonctions pour sous.total dans calc : 
+
+
+
