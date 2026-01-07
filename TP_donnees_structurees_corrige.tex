@@ -53,14 +53,17 @@ Films ayant réalisé plus d'un million d'entrées}
 
 \textcolor{blue}{\textbf{Réponse :}} \textbf{9 films français} ont réalisé plus d'un million d'entrées en 2024.
 
-\textit{Démarche :} Avec le filtre français actif, utiliser \texttt{=SOUS.TOTAL(3;B8:B49)} pour compter le nombre de lignes filtrées.
+\textit{Démarche :} Avec le filtre français actif, utiliser \texttt{=SOUS.TOTAL(3;B8:B43)} pour compter le nombre de lignes filtrées.
 
 \vspace{0.5cm}
 \textbf{Question 6 :} Quel est le total d'entrées réalisées par ces films français en 2024 (en millions) ?
 
 \textcolor{blue}{\textbf{Réponse :}} Le total des entrées des films français en 2024 est d'environ \textbf{37,39 millions d'entrées}.
 
-\textit{Démarche :} Avec le filtre français actif, utiliser \texttt{=SOUS.TOTAL(9;E8:E49)} pour sommer les entrées.
+\textit{Démarche :} Avec le filtre français actif, utiliser \texttt{=SOUS.TOTAL(9;E8:E43)} pour sommer les entrées.
+
+\vspace{0.3cm}
+\textit{Méthode alternative :} Sélectionner les cellules E8:E43 filtrées et regarder la barre d'état en bas de l'écran qui affiche automatiquement la somme.
 
 \vspace{0.5cm}
 \textbf{Question 7 :} Parmi les films affichés en 2024, certains sont sortis en 2023 (comme \textit{Wonka} sorti le 13 décembre 2023). Expliquez pourquoi ces films apparaissent dans la liste des films les plus vus en 2024.
@@ -89,7 +92,7 @@ Les trois premiers sont :
 
 \textcolor{blue}{\textbf{Réponse :}} Le total est d'environ \textbf{40,51 millions d'entrées}.
 
-\textit{Démarche :} Avec les filtres de la question précédente, utiliser \texttt{=SOUS.TOTAL(9;E8:E49)}.
+\textit{Démarche :} Avec les filtres de la question précédente, utiliser \texttt{=SOUS.TOTAL(9;E8:E43)}.
 
 \vspace{0.5cm}
 \textbf{Question 10 :} Combien de films britanniques (GRANDE BRETAGNE) ont réalisé plus d'un million d'entrées en 2024 ?
@@ -111,7 +114,7 @@ Les trois premiers sont :
 
 \textcolor{blue}{\textbf{Réponse :}} \textbf{15 films français} ont réalisé plus d'un million d'entrées en 2023.
 
-\textit{Démarche :} Onglet 2023, AutoFiltre, filtrer sur FRANCE, utiliser \texttt{=SOUS.TOTAL(3;B8:B49)}.
+\textit{Démarche :} Onglet 2023, AutoFiltre, filtrer sur FRANCE, utiliser \texttt{=SOUS.TOTAL(3;B8:B50)}.
 
 \vspace{0.5cm}
 \textbf{Question 13 :} Quel est le film américain ayant fait le plus d'entrées en 2023 ? Combien d'entrées a-t-il réalisées (en millions) ?
@@ -161,11 +164,96 @@ L'année \textbf{2023} a connu plus de succès en termes de nombre de films à s
 
 \section*{Pour aller plus loin}
 
-\textbf{Question 18 :} Téléchargez le fichier \textit{Liste des établissements cinématographiques actifs} sur data.gouv.fr. Combien de cinémas \og{}Art et Essai\fg{} sont équipés d'un écran 3D ?
+\textbf{Question 18 :} Créez un tableau croisé dynamique sur les données de 2024. En utilisant ce tableau, répondez aux questions suivantes :
+\begin{itemize}
+\item Quelle est la nationalité qui a le plus grand nombre de films ayant dépassé le million d'entrées ?
+\item Quelle nationalité a généré le plus d'entrées au total (en millions) ?
+\item Ces deux réponses sont-elles identiques ? Pourquoi ?
+\end{itemize}
 
-\textcolor{blue}{\textbf{Réponse :}} \textbf{728 cinémas} \og{}Art et Essai\fg{} sont équipés d'un écran 3D.
+\textcolor{blue}{\textbf{Réponse :}}
 
-\textit{Démarche :} Télécharger le fichier, ouvrir avec LibreOffice Calc, appliquer deux filtres simultanément (Art et Essai = OUI, Écran 3D = OUI), utiliser \texttt{=SOUS.TOTAL(3;...)} pour compter les lignes.
+\textit{Démarche :} Sélectionner toutes les données de l'onglet 2024, menu \textit{Insertion} → \textit{Tableau croisé dynamique}, glisser \og{}nationalité\fg{} dans \og{}Champs de lignes\fg{}, \og{}titre\fg{} et \og{}entrées\fg{} dans \og{}Champs de données\fg{}.
+
+Le tableau croisé dynamique produit les résultats suivants pour 2024 :
+
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Nationalité} & \textbf{Nombre de films} & \textbf{Total entrées (millions)} \\
+\hline
+ETATS UNIS & 17 & 44,05 \\
+FRANCE & 9 & 34,41 \\
+GRANDE BRETAGNE & 8 & 15,53 \\
+FRANCE / CANADA & 2 & 2,13 \\
+\hline
+\end{tabular}
+
+\vspace{0.5cm}
+\textbf{Réponses aux trois questions :}
+\begin{itemize}
+\item \textbf{Nationalité avec le plus de films :} ETATS UNIS avec 17 films
+\item \textbf{Nationalité avec le plus d'entrées :} ETATS UNIS avec 44,05 millions d'entrées
+\item \textbf{Les réponses sont-elles identiques ?} OUI, les deux réponses désignent les ETATS UNIS. Cela s'explique par le fait que les films américains sont à la fois nombreux (17 films) et très populaires. Même si la France a des films à très gros succès (comme \og{}UN P'TIT TRUC EN PLUS\fg{} avec 10,72M), les États-Unis dominent par le volume total grâce à leur grand nombre de productions (presque le double de la France).
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Question 19 (Défi) :} Créez un nouveau tableau croisé dynamique pour analyser les sorties de films en 2024 selon les périodes de l'année.
+
+\textcolor{blue}{\textbf{Réponse :}}
+
+\textit{Démarche :} Créer un nouveau tableau croisé dynamique en glissant la colonne \og{}sortie\fg{} dans \og{}Champs de lignes\fg{}. LibreOffice peut grouper automatiquement par mois. Ajouter \og{}titre\fg{} (pour compter) et \og{}entrées\fg{} (pour sommer) dans \og{}Champs de données\fg{}. On peut ensuite regrouper les mois par trimestre manuellement ou analyser directement par mois.
+
+\textbf{Analyse par trimestre (janvier-mars = T1, avril-juin = T2, etc.) :}
+
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Trimestre} & \textbf{Nombre de films} & \textbf{Total entrées (millions)} \\
+\hline
+T1 (janv-mars) & 8 & 15,67 \\
+T2 (avr-juin) & 8 & 35,60 \\
+T3 (juil-sept) & 6 & 13,25 \\
+T4 (oct-déc) & 14 & 31,60 \\
+\hline
+\end{tabular}
+
+\vspace{0.5cm}
+\textbf{Réponses détaillées :}
+\begin{itemize}
+\item \textbf{Trimestre avec le plus de sorties :} T4 (octobre-décembre) avec 14 films. C'est la période des fêtes de fin d'année, traditionnellement forte pour le cinéma.
+
+\item \textbf{Trimestre avec le plus d'entrées :} T2 (avril-juin) avec 35,60 millions d'entrées, malgré seulement 8 sorties. Ce trimestre inclut des blockbusters majeurs comme \og{}LE COMTE DE MONTE-CRISTO\fg{} (juin, 9,39M) et \og{}UN P'TIT TRUC EN PLUS\fg{} (mai, 10,72M).
+
+\item \textbf{Corrélation ?} NON, il n'y a PAS de corrélation directe. Le trimestre avec le plus de sorties (T4, 14 films) n'est PAS celui avec le plus d'entrées (T2, 35,6M). Cela démontre qu'un petit nombre de très gros succès peut générer plus d'entrées que beaucoup de films moyens. La qualité et l'attractivité des films comptent plus que leur nombre.
+\end{itemize}
+
+\textit{Analyse complémentaire par mois :}
+\begin{itemize}
+\item Février a le plus de sorties (7 films)
+\item Juin a généré le plus d'entrées (18,92 millions) grâce notamment au \og{}COMTE DE MONTE-CRISTO\fg{}
+\end{itemize}
+
+\vspace{0.5cm}
+\noindent \fbox{\begin{minipage}{0.95\textwidth}
+\textbf{Limite importante de cette analyse (esprit critique) :}
+
+Notre analyse regroupe les entrées par \textbf{date de sortie}, pas par \textbf{période réelle de fréquentation}.
+
+\textbf{Exemple concret :} \og{}LE COMTE DE MONTE-CRISTO\fg{} est sorti le 28 juin 2024 et a fait 9,39 millions d'entrées. Mais ces entrées ont été réalisées sur plusieurs mois (juin, juillet, août, septembre...). Dans notre analyse, tout est attribué à \og{}juin\fg{} ou au \og{}T2\fg{}.
+
+\textbf{Ce que mesure vraiment notre analyse :}
+\begin{itemize}
+\item Quelles périodes de l'année voient sortir les films qui auront le plus de succès
+\item Les stratégies de sortie des distributeurs (ils choisissent mai-juin pour les blockbusters)
+\end{itemize}
+
+\textbf{Ce que nous ne mesurons PAS :}
+\begin{itemize}
+\item Quand les spectateurs vont réellement au cinéma (il faudrait des données hebdomadaires d'entrées)
+\item La répartition réelle de la fréquentation sur l'année
+\end{itemize}
+
+\textbf{Conclusion :} Cette analyse reste pertinente pour comprendre les stratégies de l'industrie cinématographique, mais elle ne reflète pas directement les périodes de forte fréquentation des salles. Pour cela, il faudrait des données plus détaillées sur la répartition temporelle des entrées de chaque film.
+\end{minipage}}
 
 \vspace{1cm}
 \section*{Rappel des principales fonctions SOUS.TOTAL}

@@ -65,10 +65,15 @@ Films ayant réalisé plus d'un million d'entrées}
 \textcolor{blue}{\crayon} \textbf{Question 4 :} Quels sont les trois films français ayant fait le plus d'entrées en 2024 ?
 
 \vspace{0.5cm}
-\noindent On souhaite connaître le nombre de films français de cette liste. Dans une cellule vide (par exemple B51), écrivez \texttt{=SOUS.TOTAL(3;B8:B49)} (cette fonction permet de calculer le nombre de cellules de la colonne B, mais seulement pour les cellules filtrées).
+\noindent On souhaite connaître le nombre de films français de cette liste. Dans une cellule vide (par exemple B51), écrivez \texttt{=SOUS.TOTAL(3;B8:B43)} (cette fonction permet de calculer le nombre de cellules de la colonne B, mais seulement pour les cellules filtrées).
 
 \vspace{0.3cm}
-\noindent On souhaite connaître le nombre d'entrées réalisées par les films français de cette liste. Dans la cellule E51, écrivez \texttt{=SOUS.TOTAL(9;E8:E49)} (cette fonction permet de calculer la somme de la colonne E, mais seulement pour les films filtrés).
+\noindent On souhaite connaître le nombre d'entrées réalisées par les films français de cette liste. Dans la cellule E51, écrivez \texttt{=SOUS.TOTAL(9;E8:E43)} (cette fonction permet de calculer la somme de la colonne E, mais seulement pour les films filtrés).
+
+\vspace{0.5cm}
+\noindent \fbox{\begin{minipage}{0.95\textwidth}
+\textbf{Astuce :} Vous pouvez vérifier vos résultats rapidement grâce à la \textbf{barre d'état} située tout en bas de la fenêtre LibreOffice Calc. Sélectionnez simplement les cellules filtrées de la colonne E : la barre d'état affichera automatiquement le nombre de cellules, leur somme et leur moyenne, sans avoir besoin d'écrire de formule !
+\end{minipage}}
 
 \vspace{0.5cm}
 \textcolor{blue}{\crayon} \textbf{Question 5 :} Combien de films français ont réalisé plus d'un million d'entrées en 2024 ?
@@ -112,7 +117,45 @@ Pour toutes les questions suivantes, précisez la démarche utilisée : Quels fi
 
 \section*{Pour aller plus loin (optionnel)}
 
-\textcolor{blue}{\crayon} \textbf{Question 18 :} Téléchargez le fichier \textit{Liste des établissements cinématographiques actifs} sur data.gouv.fr. Combien de cinémas \og{}Art et Essai\fg{} sont équipés d'un écran 3D ?
+\subsection*{Découverte des tableaux croisés dynamiques}
+
+Un \textbf{tableau croisé dynamique} (aussi appelé \textit{Tableau Pivot}) est un outil puissant qui permet de réorganiser et résumer automatiquement de grandes quantités de données. Au lieu de filtrer et calculer manuellement, le tableau croisé dynamique groupe les données selon vos critères et calcule automatiquement les totaux, moyennes, etc.
+
+\vspace{0.3cm}
+\noindent \textbf{Comment créer un tableau croisé dynamique dans LibreOffice Calc :}
+\begin{enumerate}
+\item Sélectionnez toutes les données de l'onglet 2024 (y compris les en-têtes)
+\item Menu \textit{Insertion} → \textit{Tableau croisé dynamique}
+\item Choisissez \og{}Sélection active\fg{} puis cliquez sur OK
+\item Dans la fenêtre qui s'ouvre, faites glisser :
+   \begin{itemize}
+   \item \textbf{nationalité} vers la zone \og{}Champs de lignes\fg{}
+   \item \textbf{titre} vers la zone \og{}Champs de données\fg{} (pour compter les films)
+   \item \textbf{entrées} vers la zone \og{}Champs de données\fg{} (pour sommer les entrées)
+   \end{itemize}
+\item Cliquez sur OK
+\end{enumerate}
+
+\vspace{0.5cm}
+\noindent Le tableau croisé dynamique vous donnera automatiquement, pour chaque nationalité, le nombre de films et le total des entrées !
+
+\vspace{0.5cm}
+\textcolor{blue}{\crayon} \textbf{Question 18 :} Créez un tableau croisé dynamique sur les données de 2024. En utilisant ce tableau, répondez aux questions suivantes :
+\begin{itemize}
+\item Quelle est la nationalité qui a le plus grand nombre de films ayant dépassé le million d'entrées ?
+\item Quelle nationalité a généré le plus d'entrées au total (en millions) ?
+\item Ces deux réponses sont-elles identiques ? Pourquoi ?
+\end{itemize}
+
+\vspace{0.5cm}
+\textcolor{blue}{\crayon} \textbf{Question 19 (Défi) :} Créez un \textbf{nouveau} tableau croisé dynamique pour analyser les sorties de films en 2024 selon les périodes de l'année. Votre tableau doit permettre de répondre à ces questions :
+\begin{itemize}
+\item Quel mois ou trimestre de l'année 2024 a vu sortir le plus de films à succès (+ de 1M d'entrées) ?
+\item Quelle période de l'année a généré le plus d'entrées totales ?
+\item Y a-t-il une corrélation entre le nombre de sorties et le total des entrées ?
+\end{itemize}
+
+\textit{Indice :} Vous devrez utiliser la colonne \og{}sortie\fg{} dans votre tableau croisé dynamique. Réfléchissez à comment grouper les données par période (vous pouvez le faire manuellement ou utiliser les options de regroupement du tableau croisé dynamique).
 
 \vspace{1cm}
 \noindent \textbf{Fin du TP - N'oubliez pas de convertir votre compte-rendu en PDF et de le déposer sur Moodle !}
