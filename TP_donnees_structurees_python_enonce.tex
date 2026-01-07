@@ -25,7 +25,13 @@
   breaklines=true,
   frame=single,
   numbers=left,
-  numberstyle=\tiny\color{gray}
+  numberstyle=\tiny\color{gray},
+  extendedchars=true,
+  inputencoding=utf8,
+  literate=
+    {à}{{\`a}}1 {â}{{\^a}}1 {é}{{\'e}}1 {è}{{\`e}}1 {ê}{{\^e}}1
+    {î}{{\^i}}1 {ô}{{\^o}}1 {ù}{{\`u}}1 {û}{{\^u}}1
+    {ë}{{\"e}}1 {ï}{{\"i}}1 {ü}{{\"u}}1 {ç}{{\c{c}}}1
 }
 
 \title{\textbf{TP sur les données structurées}\\
@@ -102,7 +108,7 @@ total = films_francais['entrées (millions)'].sum()
 \section{Téléchargement et Ouverture du fichier}
 
 \begin{enumerate}[start=0]
-\item Téléchargez le fichier \textit{Films ayant réalisé plus d'un million d'entrées} depuis \url{https://www.data.gouv.fr/fr/} (recherchez \og{}Films entrées\fg{})
+\item Téléchargez le fichier \textit{Films ayant réalisé plus d'un million d'entrées} depuis \url{https://www.data.gouv.fr/fr/} (recherchez "Films entrées")
 \item Placez le fichier dans le même dossier que votre script Python
 \item Créez un fichier \texttt{analyse\_films.py} et écrivez le code suivant :
 \end{enumerate}
@@ -178,7 +184,7 @@ Cela affiche le minimum, maximum, moyenne, médiane, etc.
 
 \textcolor{blue}{\crayon} \textbf{Question 7 :} Écrivez le code qui filtre et affiche les films de 2024 dont la date de sortie est en 2023. Expliquez pourquoi ces films apparaissent dans la liste 2024.
 
-\textit{Indice :} Convertissez d'abord la colonne \og{}sortie\fg{} en datetime, puis filtrez sur l'année :
+\textit{Indice :} Convertissez d'abord la colonne "sortie" en datetime, puis filtrez sur l'année :
 \begin{lstlisting}
 df_2024['sortie'] = pd.to_datetime(df_2024['sortie'])
 df_2024['année_sortie'] = df_2024['sortie'].dt.year
