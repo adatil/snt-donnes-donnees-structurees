@@ -1,0 +1,268 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{pifont}
+\usepackage{enumitem}
+
+\geometry{margin=2.5cm}
+
+% Définition du symbole crayon
+\newcommand{\crayon}{\ding{46}}
+
+\title{\textbf{TP sur les données structurées - CORRIGÉ}\\
+\large Analyse des médailles des JO Paris 2024}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Découverte et tri des données}
+
+\subsection{Premières observations}
+
+\textcolor{blue}{\crayon} \textbf{Question 1 :} Ouvrez le fichier et observez sa structure. Combien y a-t-il de colonnes ? Listez les noms des colonnes.
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :} Le fichier contient \textbf{9 colonnes} :
+\begin{itemize}[noitemsep]
+\item Type\_médaille
+\item Date
+\item Athlète
+\item Sexe
+\item Discipline
+\item Épreuve
+\item Pays
+\item Code\_pays
+\item Points
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 2 :} Triez les médailles par code pays (ordre alphabétique). Quel pays apparaît en premier ? Combien de médailles ce pays a-t-il remportées ?
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :} Le premier pays en ordre alphabétique est \textbf{AIN} (Athlètes Indépendants Neutres) avec \textbf{5 médailles}.
+
+\vspace{0.3cm}
+\noindent \textit{Méthode :} Cliquer sur l'en-tête de la colonne \texttt{Code\_pays} > Données > Trier > Croissant. Compter manuellement ou utiliser \texttt{=NB.SI(H:H;"AIN")}.
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 3 :} Triez les médailles par ordre de points décroissants, puis par pays. Quel pays apparaît en premier parmi les médailles d'or ?
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :} Le premier pays parmi les médailles d'or (3 points) est \textbf{AIN}.
+
+\vspace{0.3cm}
+\noindent \textit{Méthode :} Données > Trier > Premier critère : Points (décroissant), Deuxième critère : Code\_pays (croissant).
+
+\section{Classement des pays}
+
+\subsection{Le podium des nations}
+
+\textcolor{blue}{\crayon} \textbf{Question 4 :} Activez les filtres automatiques. Filtrez pour n'afficher que le code pays \texttt{USA}. Combien de médailles les États-Unis ont-ils remportées ?
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :} Les États-Unis ont remporté \textbf{126 médailles}.
+
+\vspace{0.3cm}
+\noindent \textit{Méthode :} Données > AutoFiltre > Cliquer sur la flèche de \texttt{Code\_pays} > Cocher uniquement USA. Utiliser \texttt{=SOUS.TOTAL(3;H2:H1045)} pour compter.
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 5 :} Désactivez le filtre. Filtrez maintenant pour le code pays \texttt{CHN} (Chine). Combien de médailles la Chine a-t-elle remportées ?
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :} La Chine a remporté \textbf{91 médailles}.
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 6 :} Filtrez pour le code pays \texttt{FRA} (France). Combien de médailles la France a-t-elle remportées ? Quelle est la position de la France par rapport aux États-Unis et à la Chine ?
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :} La France a remporté \textbf{64 médailles}. Elle se classe \textbf{5\textsuperscript{e}} au classement mondial, derrière les États-Unis (126), la Chine (91), la Grande-Bretagne (65), et devant l'Australie (53).
+
+\subsection{Analyse par type de médaille}
+
+\textcolor{blue}{\crayon} \textbf{Question 7 :} Filtrez pour afficher uniquement les médailles d'or (\texttt{Gold}). Utilisez la fonction \texttt{SOUS.TOTAL} pour compter le nombre total de médailles d'or.
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :} Il y a \textbf{329 médailles d'or} au total.
+
+\vspace{0.3cm}
+\noindent \textit{Formule :} \texttt{=SOUS.TOTAL(3;A2:A1045)}
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 8 :} Toujours avec le filtre sur les médailles d'or actif, filtrez également pour n'afficher que le code pays \texttt{USA}. Combien de médailles d'or les États-Unis ont-ils remportées ?
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :} Les États-Unis ont remporté \textbf{40 médailles d'or}.
+
+\vspace{0.3cm}
+\noindent \textit{Méthode :} Avec le filtre \texttt{Type\_médaille = Gold} actif, ajouter le filtre \texttt{Code\_pays = USA}. Utiliser \texttt{SOUS.TOTAL} pour compter.
+
+\section{Analyse par discipline}
+
+\subsection{Disciplines les plus médaillées}
+
+\textcolor{blue}{\crayon} \textbf{Question 9 :} Désactivez tous les filtres. Triez par discipline (ordre alphabétique). Quelle discipline apparaît le plus souvent dans le fichier ? Comptez approximativement combien de médailles cette discipline représente.
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :} La discipline la plus médaillée est \textbf{Athletics} (Athlétisme) avec \textbf{145 médailles}.
+
+\vspace{0.3cm}
+\noindent \textit{Méthode :} Trier par \texttt{Discipline} et observer visuellement, ou utiliser \texttt{=NB.SI(E:E;"Athletics")}.
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 10 :} Filtrez pour afficher uniquement la discipline \texttt{Swimming} (Natation). Combien de médailles ont été attribuées dans cette discipline ?
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :} \textbf{105 médailles} ont été attribuées en natation.
+
+\subsection{Performance française par discipline}
+
+\textcolor{blue}{\crayon} \textbf{Question 11 :} Filtrez pour afficher les médailles de la France (\texttt{FRA}) dans la discipline \texttt{Judo}. Combien de médailles la France a-t-elle remportées en Judo ?
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :} La France a remporté \textbf{10 médailles} en Judo.
+
+\vspace{0.3cm}
+\noindent \textit{Méthode :} Filtrer \texttt{Code\_pays = FRA} ET \texttt{Discipline = Judo}. Utiliser \texttt{SOUS.TOTAL} pour compter.
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 12 :} Modifiez le filtre pour afficher les médailles de la France dans la discipline \texttt{Fencing} (Escrime). Combien de médailles ?
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :} La France a remporté \textbf{7 médailles} en escrime.
+
+\section{Comparaisons internationales}
+
+\subsection{France vs Grande-Bretagne}
+
+\textcolor{blue}{\crayon} \textbf{Question 13 :} Désactivez tous les filtres. Filtrez pour afficher uniquement les pays \texttt{FRA} et \texttt{GBR} (Grande-Bretagne). Quel pays a remporté le plus de médailles entre la France et la Grande-Bretagne ?
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :}
+\begin{itemize}
+\item France : \textbf{64 médailles}
+\item Grande-Bretagne : \textbf{65 médailles}
+\end{itemize}
+
+\noindent La \textbf{Grande-Bretagne} a remporté 1 médaille de plus que la France.
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 14 :} Avec le filtre FRA et GBR actif, ajoutez un filtre pour n'afficher que les médailles d'or. Quel pays a remporté le plus de médailles d'or entre les deux ?
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :}
+\begin{itemize}
+\item France : \textbf{16 médailles d'or}
+\item Grande-Bretagne : \textbf{14 médailles d'or}
+\end{itemize}
+
+\noindent La \textbf{France} a remporté 2 médailles d'or de plus que la Grande-Bretagne.
+
+\subsection{Calcul de points}
+
+\textcolor{blue}{\crayon} \textbf{Question 15 :} Filtrez uniquement pour la France (\texttt{FRA}). Calculez le total de points obtenus par la France en utilisant la colonne \texttt{Points}.
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :} La France a obtenu un total de \textbf{122 points}.
+
+\vspace{0.3cm}
+\noindent \textit{Formule :} \texttt{=SOUS.TOTAL(9;I2:I1045)} (avec filtre FRA actif)
+
+\vspace{0.3cm}
+\noindent \textit{Détail :} 16 or × 3 = 48 pts + 26 argent × 2 = 52 pts + 22 bronze × 1 = 22 pts = \textbf{122 points}
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 16 :} Répétez l'opération pour les États-Unis (\texttt{USA}). Quel pays a le meilleur total de points ?
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :} Les États-Unis ont obtenu un total de \textbf{250 points}.
+
+\vspace{0.3cm}
+\noindent Les \textbf{États-Unis} ont le meilleur total de points (250 contre 122 pour la France).
+
+\section{Analyse Hommes / Femmes}
+
+\subsection{Répartition mondiale}
+
+\textcolor{blue}{\crayon} \textbf{Question 17 :} Désactivez tous les filtres. Filtrez pour n'afficher que les médailles masculines (sexe = \texttt{H}). Comptez le nombre de médailles masculines. Faites de même pour les médailles féminines (sexe = \texttt{F}). Comparez.
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :}
+\begin{itemize}
+\item Médailles masculines : \textbf{502}
+\item Médailles féminines : \textbf{478}
+\end{itemize}
+
+\noindent Il y a 24 médailles de plus chez les hommes que chez les femmes. La répartition est relativement équilibrée (48,2\% femmes, 51,8\% hommes).
+
+\subsection{Performance par sexe en France}
+
+\textcolor{blue}{\crayon} \textbf{Question 18 :} Filtrez pour afficher les médailles de France (\texttt{FRA}) remportées par des femmes (\texttt{F}). Combien de médailles les Françaises ont-elles remportées ?
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :} Les Françaises ont remporté \textbf{23 médailles}.
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 19 :} Modifiez le filtre pour afficher les médailles de France remportées par des hommes (\texttt{H}). Qui a remporté le plus de médailles en France : les hommes ou les femmes ?
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :} Les Français ont remporté \textbf{38 médailles}.
+
+\vspace{0.3cm}
+\noindent Les \textbf{hommes} ont remporté plus de médailles que les femmes en France (38 contre 23).
+
+\vspace{0.3cm}
+\noindent \textit{Note :} Les 3 médailles restantes (64 - 38 - 23 = 3) sont des médailles d'équipes mixtes ou équipes non genrées.
+
+\section{Pour aller plus loin : Tableaux croisés dynamiques}
+
+\subsection{Top 10 des pays}
+
+\textcolor{blue}{\crayon} \textbf{Question 20 :} Désactivez tous les filtres. Créez un tableau croisé dynamique avec en lignes \texttt{Code\_pays} et en données le nombre de médailles. Triez par nombre de médailles décroissant. Quels sont les 3 pays ayant remporté le plus de médailles ?
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :} Le Top 3 des pays est :
+\begin{enumerate}
+\item \textbf{USA} : 126 médailles
+\item \textbf{CHN} (Chine) : 91 médailles
+\item \textbf{GBR} (Grande-Bretagne) : 65 médailles
+\end{enumerate}
+
+\vspace{0.3cm}
+\noindent \textit{Méthode :} Insertion > Tableau croisé dynamique > Faire glisser \texttt{Code\_pays} dans Champs de lignes et n'importe quelle colonne dans Champs de données (configurée sur "Nombre"). Cliquer sur le total et trier par ordre décroissant.
+
+\subsection{Médailles par discipline et par pays}
+
+\textcolor{blue}{\crayon} \textbf{Question 21 (Défi) :} Créez un tableau croisé dynamique avec en lignes \texttt{Discipline}, en colonnes \texttt{Type\_médaille} et en données le nombre de médailles. Quelle discipline a attribué le plus de médailles d'or ? Et le plus de médailles au total ?
+
+\vspace{0.3cm}
+\noindent \textbf{Réponse :}
+\begin{itemize}
+\item Discipline avec le plus de médailles d'or : \textbf{Athletics} (Athlétisme) avec \textbf{48 médailles d'or}
+\item Discipline avec le plus de médailles au total : \textbf{Athletics} avec \textbf{145 médailles} (48 or + 48 argent + 49 bronze)
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent \textit{Méthode :} Insertion > Tableau croisé dynamique > \texttt{Discipline} dans lignes, \texttt{Type\_médaille} dans colonnes, n'importe quelle colonne dans données. Observer les totaux par ligne et par colonne.
+
+\vspace{1cm}
+
+\noindent \textbf{Fin du corrigé}
+
+\end{document}

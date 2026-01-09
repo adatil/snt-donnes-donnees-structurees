@@ -1,0 +1,339 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{textcomp}
+\usepackage{pifont}
+
+\geometry{margin=2.5cm}
+
+% Définition du symbole crayon
+\newcommand{\crayon}{\ding{46}}
+
+% Configuration pour le code Python
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  extendedchars=true,
+  inputencoding=utf8,
+  mathescape=false,
+  upquote=true,
+  columns=flexible,
+  keepspaces=true,
+  literate=
+    {à}{{\`a}}1 {â}{{\^a}}1 {é}{{\'e}}1 {è}{{\`e}}1 {ê}{{\^e}}1
+    {î}{{\^i}}1 {ô}{{\^o}}1 {ù}{{\`u}}1 {û}{{\^u}}1
+    {ë}{{\"e}}1 {ï}{{\"i}}1 {ü}{{\"u}}1 {ç}{{\c{c}}}1
+}
+
+\title{\textbf{Guide des commandes Pandas}\\
+\large Aide-mémoire pour le TP sur les données structurées}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+
+Ce document accompagne le notebook Jupyter \texttt{analyse\_films\_capytale.ipynb} disponible sur Capytale. Il présente les principales commandes Pandas que vous utiliserez pendant le TP.
+
+\section{Qu'est-ce que Pandas ?}
+
+\textbf{Pandas} est une bibliothèque Python très puissante pour l'analyse de données. Elle permet de manipuler des tableaux de données (appelés \textit{DataFrames}) de manière simple et efficace.
+
+Un \textbf{DataFrame} est similaire à un tableau Excel : il a des lignes, des colonnes avec des noms, et on peut filtrer, trier et calculer des statistiques dessus.
+
+\section{Commandes de base}
+
+\subsection{Afficher les données}
+
+\begin{lstlisting}
+# Afficher les 5 premières lignes
+df.head()
+
+# Afficher les 10 premières lignes
+df.head(10)
+
+# Afficher les 5 dernières lignes
+df.tail()
+\end{lstlisting}
+
+\subsection{Informations sur le DataFrame}
+
+\begin{lstlisting}
+# Afficher les noms des colonnes
+df.columns
+# ou
+df.columns.tolist()
+
+# Afficher des informations générales (types, mémoire)
+df.info()
+
+# Afficher les dimensions (nombre de lignes, nombre de colonnes)
+df.shape
+# Exemple de résultat : (36, 5) signifie 36 lignes et 5 colonnes
+
+# Afficher les statistiques descriptives
+df.describe()
+\end{lstlisting}
+
+\subsection{Sélectionner une colonne}
+
+\begin{lstlisting}
+# Sélectionner une seule colonne
+df['nationalité']
+
+# Sélectionner plusieurs colonnes
+df[['titre', 'entrées (millions)']]
+\end{lstlisting}
+
+\subsection{Sélectionner une ligne}
+
+\begin{lstlisting}
+# Sélectionner la première ligne (index 0)
+df.iloc[0]
+
+# Sélectionner les 3 premières lignes
+df.iloc[0:3]
+
+# Sélectionner la dernière ligne
+df.iloc[-1]
+\end{lstlisting}
+
+\section{Filtrer les données}
+
+Le filtrage est l'une des opérations les plus importantes. On utilise des \textbf{conditions} pour ne garder que certaines lignes.
+
+\subsection{Filtrage simple}
+
+\begin{lstlisting}
+# Filtrer les films français
+films_francais = df[df['nationalité'] == 'FRANCE']
+
+# Filtrer les films américains
+films_us = df[df['nationalité'] == 'ETATS UNIS']
+
+# Filtrer les films avec plus de 5 millions d'entrées
+gros_succes = df[df['entrées (millions)'] > 5]
+\end{lstlisting}
+
+\subsection{Filtrage avec plusieurs conditions}
+
+\begin{lstlisting}
+# ET logique : &
+# Films français avec plus de 2 millions d'entrées
+films_fr_succes = df[(df['nationalité'] == 'FRANCE') &
+                      (df['entrées (millions)'] > 2)]
+
+# OU logique : |
+# Films français OU britanniques
+films_fr_ou_gb = df[(df['nationalité'] == 'FRANCE') |
+                     (df['nationalité'] == 'GRANDE BRETAGNE')]
+\end{lstlisting}
+
+\textbf{Attention :} N'oubliez pas les parenthèses autour de chaque condition !
+
+\subsection{Filtrage sur les dates}
+
+\begin{lstlisting}
+# D'abord, convertir la colonne en format date
+df['sortie'] = pd.to_datetime(df['sortie'])
+
+# Extraire l'année
+df['année_sortie'] = df['sortie'].dt.year
+
+# Filtrer sur l'année
+films_2024 = df[df['année_sortie'] == 2024]
+
+# Extraire le mois
+df['mois'] = df['sortie'].dt.month
+\end{lstlisting}
+
+\section{Trier les données}
+
+\begin{lstlisting}
+# Trier par ordre croissant (du plus petit au plus grand)
+df_trie = df.sort_values('entrées (millions)')
+
+# Trier par ordre décroissant (du plus grand au plus petit)
+df_trie = df.sort_values('entrées (millions)', ascending=False)
+
+# Trier sur plusieurs colonnes
+df_trie = df.sort_values(['nationalité', 'entrées (millions)'],
+                          ascending=[True, False])
+\end{lstlisting}
+
+\section{Compter et calculer}
+
+\subsection{Compter le nombre de lignes}
+
+\begin{lstlisting}
+# Compter le nombre de films
+nombre = len(df)
+
+# Autre méthode
+nombre = df.shape[0]
+
+# Compter les valeurs non nulles dans une colonne
+nombre = df['titre'].count()
+\end{lstlisting}
+
+\subsection{Calculer des statistiques}
+
+\begin{lstlisting}
+# Calculer la somme d'une colonne
+total = df['entrées (millions)'].sum()
+
+# Calculer la moyenne
+moyenne = df['entrées (millions)'].mean()
+
+# Calculer le minimum
+minimum = df['entrées (millions)'].min()
+
+# Calculer le maximum
+maximum = df['entrées (millions)'].max()
+
+# Résumé statistique complet
+df['entrées (millions)'].describe()
+\end{lstlisting}
+
+\section{Grouper et agréger}
+
+La méthode \texttt{groupby()} permet de regrouper les données selon une catégorie et de calculer des statistiques pour chaque groupe.
+
+\begin{lstlisting}
+# Grouper par nationalité et compter les films
+stats = df.groupby('nationalité')['titre'].count()
+
+# Grouper par nationalité et sommer les entrées
+stats = df.groupby('nationalité')['entrées (millions)'].sum()
+
+# Grouper et calculer plusieurs statistiques à la fois
+stats = df.groupby('nationalité').agg({
+    'titre': 'count',              # Compter les films
+    'entrées (millions)': 'sum'    # Sommer les entrées
+})
+
+# Renommer les colonnes du résultat
+stats.columns = ['Nombre de films', 'Total entrées']
+
+# Trier les résultats
+stats = stats.sort_values('Total entrées', ascending=False)
+\end{lstlisting}
+
+\section{Enchaîner les opérations}
+
+On peut enchaîner plusieurs opérations à la suite :
+
+\begin{lstlisting}
+# Filtrer les films français, trier par entrées décroissantes,
+# et afficher les 3 premiers
+top3_fr = df[df['nationalité'] == 'FRANCE'] \
+    .sort_values('entrées (millions)', ascending=False) \
+    .head(3)
+
+# Afficher seulement certaines colonnes
+top3_fr = df[df['nationalité'] == 'FRANCE'] \
+    .sort_values('entrées (millions)', ascending=False) \
+    .head(3)[['titre', 'entrées (millions)']]
+\end{lstlisting}
+
+\section{Astuces et bonnes pratiques}
+
+\subsection{Affichage amélioré}
+
+\begin{lstlisting}
+# Afficher plus de lignes
+pd.set_option('display.max_rows', 100)
+
+# Afficher plus de colonnes
+pd.set_option('display.max_columns', 20)
+
+# Ne pas tronquer les noms de colonnes
+pd.set_option('display.max_colwidth', None)
+\end{lstlisting}
+
+\subsection{Vérifier les valeurs uniques}
+
+\begin{lstlisting}
+# Afficher toutes les nationalités présentes
+df['nationalité'].unique()
+
+# Compter le nombre de valeurs uniques
+df['nationalité'].nunique()
+
+# Compter les occurrences de chaque valeur
+df['nationalité'].value_counts()
+\end{lstlisting}
+
+\subsection{Gérer les valeurs manquantes}
+
+\begin{lstlisting}
+# Vérifier s'il y a des valeurs manquantes
+df.isnull().sum()
+
+# Supprimer les lignes avec des valeurs manquantes
+df_clean = df.dropna()
+
+# Remplacer les valeurs manquantes
+df['colonne'].fillna(0)
+\end{lstlisting}
+
+\section{Tableau récapitulatif}
+
+\begin{center}
+\begin{tabular}{|p{5cm}|p{8cm}|}
+\hline
+\textbf{Opération} & \textbf{Commande} \\
+\hline
+Afficher les premières lignes & \texttt{df.head()} \\
+\hline
+Afficher les colonnes & \texttt{df.columns} \\
+\hline
+Sélectionner une colonne & \texttt{df['nom\_colonne']} \\
+\hline
+Filtrer & \texttt{df[df['colonne'] == valeur]} \\
+\hline
+Trier (décroissant) & \texttt{df.sort\_values('colonne', ascending=False)} \\
+\hline
+Compter les lignes & \texttt{len(df)} ou \texttt{df.shape[0]} \\
+\hline
+Calculer une somme & \texttt{df['colonne'].sum()} \\
+\hline
+Calculer une moyenne & \texttt{df['colonne'].mean()} \\
+\hline
+Grouper et agréger & \texttt{df.groupby('cat').agg(...)} \\
+\hline
+Première ligne & \texttt{df.iloc[0]} \\
+\hline
+Statistiques descriptives & \texttt{df.describe()} \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{Ressources complémentaires}
+
+\begin{itemize}
+\item Documentation officielle Pandas : \url{https://pandas.pydata.org/docs/}
+\item Tutoriel Pandas (français) : \url{https://openclassrooms.com/fr/courses/4452741-decouvrez-les-librairies-python-pour-la-data-science}
+\end{itemize}
+
+\vspace{1cm}
+\noindent \textbf{Bon travail avec le notebook Jupyter sur Capytale !}
+
+\end{document}
