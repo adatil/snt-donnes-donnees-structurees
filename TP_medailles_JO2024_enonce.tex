@@ -1,0 +1,160 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{pifont}
+\usepackage{enumitem}
+
+\geometry{margin=2.5cm}
+
+% Définition du symbole crayon
+\newcommand{\crayon}{\ding{46}}
+
+\title{\textbf{TP sur les données structurées}\\
+\large Analyse des médailles des JO Paris 2024}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Objectif}
+
+Ce TP a pour objectif de vous familiariser avec la manipulation de données structurées à l'aide du tableur LibreOffice Calc. Vous allez analyser les 1044 médailles remportées lors des Jeux Olympiques de Paris 2024 par 92 pays différents.
+
+\section*{Prérequis}
+
+\begin{itemize}
+\item Ouvrir le fichier \texttt{medailles\_jo2024\_complet.csv} avec LibreOffice Calc
+\item Le fichier contient \textbf{1044 médailles} (329 or, 330 argent, 385 bronze)
+\item Chaque ligne représente une médaille avec : type, date, athlète, sexe, discipline, épreuve, pays, code pays et points
+\end{itemize}
+
+\section{Découverte et tri des données}
+
+\subsection{Premières observations}
+
+\textcolor{blue}{\crayon} \textbf{Question 1 :} Ouvrez le fichier et observez sa structure. Combien y a-t-il de colonnes ? Listez les noms des colonnes.
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 2 :} Triez les médailles par code pays (ordre alphabétique). Quel pays apparaît en premier ? Combien de médailles ce pays a-t-il remportées ?
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 3 :} Triez les médailles par ordre de points décroissants, puis par pays. Quel pays apparaît en premier parmi les médailles d'or ?
+
+\section{Classement des pays}
+
+\subsection{Le podium des nations}
+
+\textcolor{blue}{\crayon} \textbf{Question 4 :} Activez les filtres automatiques (\og{}Données > AutoFiltre\fg{}). Filtrez pour n'afficher que le code pays \texttt{USA}. Combien de médailles les États-Unis ont-ils remportées ?
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 5 :} Désactivez le filtre. Filtrez maintenant pour le code pays \texttt{CHN} (Chine). Combien de médailles la Chine a-t-elle remportées ?
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 6 :} Filtrez pour le code pays \texttt{FRA} (France). Combien de médailles la France a-t-elle remportées ? Quelle est la position de la France par rapport aux États-Unis et à la Chine ?
+
+\subsection{Analyse par type de médaille}
+
+\textcolor{blue}{\crayon} \textbf{Question 7 :} Filtrez pour afficher uniquement les médailles d'or (\texttt{Gold}). Utilisez la fonction \texttt{SOUS.TOTAL} pour compter le nombre total de médailles d'or.
+
+\vspace{0.3cm}
+\noindent \textit{Rappel :} La fonction \texttt{=SOUS.TOTAL(3;A2:A1045)} compte les cellules non vides, \textbf{en tenant compte} des filtres actifs.
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 8 :} Toujours avec le filtre sur les médailles d'or actif, filtrez également pour n'afficher que le code pays \texttt{USA}. Combien de médailles d'or les États-Unis ont-ils remportées ?
+
+\section{Analyse par discipline}
+
+\subsection{Disciplines les plus médaillées}
+
+\textcolor{blue}{\crayon} \textbf{Question 9 :} Désactivez tous les filtres. Triez par discipline (ordre alphabétique). Quelle discipline apparaît le plus souvent dans le fichier ? Comptez approximativement combien de médailles cette discipline représente.
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 10 :} Filtrez pour afficher uniquement la discipline \texttt{Swimming} (Natation). Combien de médailles ont été attribuées dans cette discipline ?
+
+\subsection{Performance française par discipline}
+
+\textcolor{blue}{\crayon} \textbf{Question 11 :} Filtrez pour afficher les médailles de la France (\texttt{FRA}) dans la discipline \texttt{Judo}. Combien de médailles la France a-t-elle remportées en Judo ?
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 12 :} Modifiez le filtre pour afficher les médailles de la France dans la discipline \texttt{Fencing} (Escrime). Combien de médailles ?
+
+\section{Comparaisons internationales}
+
+\subsection{France vs Grande-Bretagne}
+
+\textcolor{blue}{\crayon} \textbf{Question 13 :} Désactivez tous les filtres. Filtrez pour afficher uniquement les pays \texttt{FRA} et \texttt{GBR} (Grande-Bretagne). Quel pays a remporté le plus de médailles entre la France et la Grande-Bretagne ?
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 14 :} Avec le filtre FRA et GBR actif, ajoutez un filtre pour n'afficher que les médailles d'or. Quel pays a remporté le plus de médailles d'or entre les deux ?
+
+\subsection{Calcul de points}
+
+\textcolor{blue}{\crayon} \textbf{Question 15 :} Filtrez uniquement pour la France (\texttt{FRA}). Calculez le total de points obtenus par la France en utilisant la colonne \texttt{Points}.
+
+\vspace{0.3cm}
+\noindent \textit{Rappel :} Utilisez \texttt{SOUS.TOTAL(9;...)} pour sommer en tenant compte des filtres. Or = 3 points, Argent = 2 points, Bronze = 1 point.
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 16 :} Répétez l'opération pour les États-Unis (\texttt{USA}). Quel pays a le meilleur total de points ?
+
+\section{Analyse Hommes / Femmes}
+
+\subsection{Répartition mondiale}
+
+\textcolor{blue}{\crayon} \textbf{Question 17 :} Désactivez tous les filtres. Filtrez pour n'afficher que les médailles masculines (sexe = \texttt{H}). Comptez le nombre de médailles masculines. Faites de même pour les médailles féminines (sexe = \texttt{F}). Comparez.
+
+\subsection{Performance par sexe en France}
+
+\textcolor{blue}{\crayon} \textbf{Question 18 :} Filtrez pour afficher les médailles de France (\texttt{FRA}) remportées par des femmes (\texttt{F}). Combien de médailles les Françaises ont-elles remportées ?
+
+\vspace{0.5cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 19 :} Modifiez le filtre pour afficher les médailles de France remportées par des hommes (\texttt{H}). Qui a remporté le plus de médailles en France : les hommes ou les femmes ?
+
+\section{Pour aller plus loin : Tableaux croisés dynamiques}
+
+\subsection{Top 10 des pays}
+
+Les tableaux croisés dynamiques permettent de croiser plusieurs critères et d'obtenir rapidement des statistiques.
+
+\vspace{0.3cm}
+
+\textcolor{blue}{\crayon} \textbf{Question 20 :} Désactivez tous les filtres. Créez un tableau croisé dynamique avec :
+\begin{itemize}
+\item En lignes : \texttt{Code\_pays}
+\item En données : Nombre de médailles (utilisez n'importe quelle colonne)
+\end{itemize}
+
+Triez par nombre de médailles décroissant. Quels sont les 3 pays ayant remporté le plus de médailles ?
+
+\subsection{Médailles par discipline et par pays}
+
+\textcolor{blue}{\crayon} \textbf{Question 21 (Défi) :} Créez un tableau croisé dynamique avec :
+\begin{itemize}
+\item En lignes : \texttt{Discipline}
+\item En colonnes : \texttt{Type\_médaille}
+\item En données : Nombre de médailles
+\end{itemize}
+
+Quelle discipline a attribué le plus de médailles d'or ? Et le plus de médailles au total ?
+
+\vspace{1cm}
+
+\noindent \textbf{Fin du TP - N'oubliez pas de sauvegarder votre travail !}
+
+\end{document}
